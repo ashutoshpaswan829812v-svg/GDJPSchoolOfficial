@@ -6,7 +6,6 @@
     <title>GDJPS - GYANDEEP JYOTI PUBLIC SCHOOL</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
@@ -134,16 +133,47 @@
             color: var(--primary-color);
         }
 
-        /* === 2. Hero Section === */
+        /* === 2. Hero Section - NEW Styles for Animated Background === */
         .hero-section {
-            /* IMPORTANT: REPLACE THIS URL WITH YOUR SCHOOL'S MAIN PHOTO */
-            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://via.placeholder.com/1600x600/E91E63/FFFFFF?text=YOUR_SCHOOL_BUILDING_PHOTO') no-repeat center center/cover;
+            position: relative;
             height: 80vh;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
             color: white;
+            overflow: hidden; /* Important for background slides */
+        }
+
+        .hero-background-slides {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out; /* Fade transition */
+        }
+        .hero-background-slides.active {
+            opacity: 1;
+        }
+        /* Overlay to make text readable */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75); /* Dark overlay */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative; /* Bring content above overlay */
+            z-index: 2;
         }
         .hero-content .full-name {
             font-size: 1.8rem; 
@@ -190,7 +220,6 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             border-top: 3px solid var(--secondary-color);
         }
-        /* --- IMAGE HIDING AND PLACEHOLDER FOR NO PHOTO --- */
         .teacher-card .photo-placeholder {
             width: 100px;
             height: 100px;
@@ -213,7 +242,60 @@
             color: #666;
             margin-bottom: 0;
         }
-        /* --- End Teacher Details Changes --- */
+
+        /* --- Custom Style for Result Section --- */
+        .result-box {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+            margin: 40px auto;
+            border-top: 5px solid var(--primary-color);
+        }
+        .result-box select,
+        .result-box input[type="text"] {
+            width: 30%; /* Adjusted for 3 columns */
+            padding: 12px;
+            margin-right: 2%; /* Spacing between inputs */
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            text-align: center;
+            box-sizing: border-box; /* Include padding in width */
+        }
+        .result-box input[type="text"]:last-of-type {
+            margin-right: 0; /* No right margin for last input */
+        }
+        .result-box button.btn-primary {
+            width: 100%;
+            margin-top: 20px;
+        }
+        .exam-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+        }
+        .exam-select-btn {
+            border-radius: 5px;
+        }
+        /* Mobile adjustments for result search inputs */
+        @media (max-width: 768px) {
+            .result-box select,
+            .result-box input[type="text"] {
+                width: 100%; /* Full width on mobile */
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            .exam-buttons button {
+                width: 100%; /* Full width for exam buttons */
+                margin-bottom: 10px;
+            }
+        }
 
 
         /* 7. Gallery Section */
@@ -278,6 +360,12 @@
             .hero-content h1 {
                 font-size: 3.5rem;
             }
+            .hero-content .full-name {
+                font-size: 1.4rem;
+            }
+            .hero-content .tagline {
+                font-size: 1.2rem;
+            }
             .about-container {
                 flex-direction: column;
             }
@@ -299,7 +387,8 @@
             <a href="#about">About Us</a>
             <a href="#classes">Classes</a>
             <a href="#faculty">Faculty</a>
-            <a href="#fees">Fees & Results</a>
+            <a href="#results">Results</a>
+            <a href="#fees">Fees</a>
             <a href="#gallery">Gallery</a>
             <a href="#contact">Contact</a>
         </nav>
@@ -342,7 +431,8 @@
         <div class="faculty-grid">
             
             <div class="teacher-card">
-                <div class="photo-placeholder">P</div> <h4>[Teacher's Full Name 1]</h4> 
+                <div class="photo-placeholder">P</div> 
+                <h4>[Teacher's Full Name 1]</h4> 
                 <p>[Principal/Headmaster]</p> 
                 <p>[Qualifications/Experience]</p> 
             </div>
@@ -371,11 +461,69 @@
             </div>
     </section>
 
-    <section id="fees" class="content-section light-bg">
-        <h2>Fees & Examination Results</h2>
-        </section>
+    <section id="results" class="content-section light-bg">
+        <h2>Examination Results Portal</h2>
+        
+        <div class="result-box" style="max-width: 900px;">
+            <h3>Select Exam Result</h3>
+            <p>Kripya pehle us exam ko chunein jiska result aap dekhna chahte hain:</p>
+            
+            <div class="exam-buttons" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 30px;">
+                <button class="btn-primary exam-select-btn" data-exam="Term1" style="border-radius: 5px;">Term 1 Exam</button>
+                <button class="btn-primary exam-select-btn" data-exam="HalfYearly" style="border-radius: 5px;">Half Yearly Exam</button>
+                <button class="btn-primary exam-select-btn" data-exam="FinalExam" style="border-radius: 5px;">Annual Final Exam</button>
+            </div>
+            
+            <div id="searchInterface" style="border: 1px solid #ddd; padding: 30px; border-radius: 8px; background: #fff; display: none;">
+                <h4><span id="selectedExamTitle"></span> Result Search</h4>
+                <form id="resultSearchForm">
+                    <input type="hidden" id="selectedExamType">
+                    
+                    <select id="classSelect" required>
+                        <option value="" disabled selected>Select Class</option>
+                        <option value="Class_9">Class 9</option>
+                        <option value="Class_10">Class 10</option>
+                    </select>
+                    
+                    <select id="sectionSelect" required>
+                        <option value="" disabled selected>Select Section</option>
+                        <option value="Section_A">Section A</option>
+                        <option value="Section_B">Section B</option>
+                    </select>
+                    
+                    <input type="text" id="rollNoInput" placeholder="Enter Roll Number (e.g., 001)" required>
+                    
+                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 20px;"><i class="fas fa-search"></i> View Marksheet</button>
+                </form>
+                
+                <p class="info-message" style="margin-top: 25px;">
+                    Dhyaan dein: Marksheet tabhi khulegi jab file ka naam aapke Roll No. se match karega.
+                </p>
+            </div>
+        </div>
+    </section>
 
-    <section id="gallery" class="content-section">
+    <section id="fees" class="content-section">
+        <h2>Fee Structure</h2>
+        <div class="info-container" style="grid-template-columns: 1fr; max-width: 500px;">
+            <div class="info-box">
+                <h3>Fee Structure (Approximate)</h3>
+                <p>Please note: The full fee structure is available at the school office.</p>
+                <table class="fee-table">
+                    <thead>
+                        <tr><th>Class</th><th>Admission Fee</th><th>Monthly Tuition</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Nursery</td><td>₹ 8,000</td><td>₹ 1,500</td></tr>
+                        <tr><td>Class I-V</td><td>₹ 10,000</td><td>₹ 1,800</td></tr>
+                        <tr><td>Class VI-VIII</td><td>₹ 12,000</td><td>₹ 2,200</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="content-section light-bg">
         <h2>School Gallery</h2>
         <p style="text-align:center; font-size: 1.2rem; color: #555; margin-bottom: 30px;"><i class="fas fa-images"></i> Glimpses of our school life, events, and infrastructure.</p>
         <div class="gallery-grid">
@@ -414,7 +562,7 @@
         </div>
     </section>
 
-    <section id="contact" class="contact-section light-bg">
+    <section id="contact" class="contact-section">
         <h2>Contact Us</h2>
         </section>
 
@@ -425,44 +573,4 @@
         document.addEventListener('DOMContentLoaded', function () {
             const menuToggle = document.getElementById('menuToggle');
             const navMenu = document.getElementById('navMenu');
-
-            // --- Mobile Menu Toggle functionality ---
-            if (menuToggle && navMenu) {
-                menuToggle.addEventListener('click', function () {
-                    navMenu.classList.toggle('active');
-                    
-                    const icon = menuToggle.querySelector('i');
-                    if (navMenu.classList.contains('active')) {
-                        icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-times');
-                    } else {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                });
-                
-                // Close menu when a navigation link is clicked (on mobile)
-                navMenu.querySelectorAll('a').forEach(item => {
-                    item.addEventListener('click', () => {
-                        if(navMenu.classList.contains('active')) {
-                            navMenu.classList.remove('active');
-                            menuToggle.querySelector('i').classList.remove('fa-times');
-                            menuToggle.querySelector('i').classList.add('fa-bars');
-                        }
-                    });
-                });
-            }
-
-            // --- Contact Form Submission Alert ---
-            const contactForm = document.querySelector('.contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    alert('Your message has been sent successfully. The GDJPS team will contact you soon. Thank you!');
-                    contactForm.reset();
-                });
-            }
-        });
-    </script>
-</body>
-</html>
+            const contactForm = document.que
