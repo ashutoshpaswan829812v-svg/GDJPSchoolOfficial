@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDJPS - GYANDEEP JYOTI PUBLIC SCHOOL</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* Global Reset and Variables */
+        :root {
+            --primary-color: #E91E63; /* Rani Pink / Deep Rose */
+            --secondary-color: #FFC107; /* Gold/Amber - Accent color */
+            --text-dark: #2c3e50;
+            --text-light: #f4f4f4;
+            --light-bg: #fdf6f7;
+            --dark-bg: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Typography and Headings */
+        h1, h2, h3 {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-family: 'Merriweather', serif;
+        }
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 5px;
+        }
+
+        /* Buttons & Hover Effect */
+        .btn-primary {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 14px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+        }
+        .btn-primary:hover {
+            background: #d81b60;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* === 1. Header & Navigation === */
+        .main-header {
+            background: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .logo h1 {
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        .logo span {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-dark);
+            margin-top: 0px;
+            font-weight: 600;
+        }
+
+        .nav-menu a {
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 10px 15px;
+            margin-left: 10px;
+            font-weight: 600;
+            transition: color 0.3s, border-bottom 0.3s, transform 0.2s;
+        }
+        .nav-menu a:hover {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* === 2. Hero Section === */
+        .hero-section {
+            /* IMPORTANT: REPLACE THIS URL WITH YOUR SCHOOL'S MAIN PHOTO */
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://via.placeholder.com/1600x600/E91E63/FFFFFF?text=YOUR_SCHOOL_BUILDING_PHOTO') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        .hero-content .full-name {
+            font-size: 1.8rem; 
+            margin-bottom: 5px;
+            color: #FFECB3;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+        }
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+            line-height: 1.1;
+        }
+        .hero-content .tagline {
+            font-size: 1.6rem;
+            margin-bottom: 40px;
+            color: var(--secondary-color);
+        }
+
+        /* === 3. Section Styling (General) === */
+        section {
+            padding: 80px 5%;
+        }
+        .light-bg {
+            background-color: var(--light-bg);
+        }
+
+        /* --- Teacher Details (Simplified for no photo) --- */
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .teacher-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-top: 3px solid var(--secondary-color);
+        }
+        /* --- IMAGE HIDING AND PLACEHOLDER FOR NO PHOTO --- */
+        .teacher-card .photo-placeholder {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 10px auto;
+            border: 3px solid var(--secondary-color);
+        }
+        .teacher-card h4 {
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+        .teacher-card p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0;
+        }
+        /* --- End Teacher Details Changes --- */
+
+
+        /* 7. Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+
+
+        /* === Media Queries (Responsiveness) === */
+        @media (max-width: 992px) {
+            .info-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Mobile menu fix */
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 70px; 
+                left: 0;
+                background: white;
+                box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+                padding-bottom: 10px;
+            }
+            .nav-menu.active { 
+                display: flex;
+            }
+            .nav-menu a {
+                padding: 12px 20px;
+                margin: 0;
+                border-bottom: 1px solid #eee;
+                width: 100%;
+                text-align: center;
+            }
+            .main-header {
+                flex-wrap: wrap;
+            }
+            .menu-toggle {
+                display: block;
+            }
+
+            /* Content adjustments */
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+            .about-container {
+                flex-direction: column;
+            }
+            section {
+                padding: 50px 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">
+            <h1>GDJPS</h1>
+            <span>GYANDEEP JYOTI PUBLIC SCHOOL</span>
+        </div>
+        <nav class="nav-menu" id="navMenu">
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#classes">Classes</a>
+            <a href="#faculty">Faculty</a>
+            <a href="#fees">Fees & Results</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <button class="menu-toggle" aria-label="Toggle navigation" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <p class="full-name">GYANDEEP JYOTI PUBLIC SCHOOL</p>
+            <h1>GDJPS</h1>
+            <p class="tagline">Enlightened by Knowledge, Towards Progress</p>
+            <a href="#contact" class="btn-primary">Enquire for Admission</a>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <h2>About Us</h2>
+        <div class="about-container">
+            <div class="about-info">
+                <h3>Our Vision</h3>
+                <p>**GDJPS**, a **CBSE-affiliated** school established in **2023**. Our aim is to prepare children holistically through education, moral development, and the use of modern technology.</p>
+                <p>We strive to develop a sense of knowledge, self-confidence, and responsibility in children, preparing them to be future leaders. We believe in nurturing both academic excellence and ethical values.</p>
+            </div>
+            <div class="about-stats">
+                <div><span>CBSE</span><p>Affiliation</p></div>
+                <div><span>2023</span><p>Established</p></div>
+                <div><span>Jharkhand</span><p>Location</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="classes" class="content-section light-bg">
+        <h2>Class Details</h2>
+        </section>
+    
+    <section id="faculty" class="content-section">
+        <h2>Our Dedicated Faculty</h2>
+        <div class="faculty-grid">
+            
+            <div class="teacher-card">
+                <div class="photo-placeholder">P</div> <h4>[Teacher's Full Name 1]</h4> 
+                <p>[Principal/Headmaster]</p> 
+                <p>[Qualifications/Experience]</p> 
+            </div>
+            
+            <div class="teacher-card">
+                <div class="photo-placeholder">T</div> 
+                <h4>[Teacher's Full Name 2]</h4>
+                <p>[Senior Math Teacher]</p>
+                <p>[M.Sc., B.Ed.]</p>
+            </div>
+            
+            <div class="teacher-card">
+                <div class="photo-placeholder">T</div> 
+                <h4>[Teacher's Full Name 3]</h4>
+                <p>[English Teacher]</p>
+                <p>[M.A. English, B.Ed.]</p>
+            </div>
+            
+            <div class="teacher-card">
+                <div class="photo-placeholder">T</div> 
+                <h4>[Teacher's Full Name 4]</h4>
+                <p>[Science Coordinator]</p>
+                <p>[M.Sc. Physics]</p>
+            </div>
+            
+            </div>
+    </section>
+
+    <section id="fees" class="content-section light-bg">
+        <h2>Fees & Examination Results</h2>
+        </section>
+
+    <section id="gallery" class="content-section">
+        <h2>School Gallery</h2>
+        <p style="text-align:center; font-size: 1.2rem; color: #555; margin-bottom: 30px;"><i class="fas fa-images"></i> Glimpses of our school life, events, and infrastructure.</p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="WhatsApp Image 2025-10-12 at 8.08.32 PM.jpeg" alt="School Event Photo 1">
+            </div>
+            
+            <div class="gallery-item">
+                <img src="WhatsApp Image 2025-10-12 at 8.08.31 PM.jpeg" alt="School Event Photo 2">
+            </div>
+            
+            <div class="gallery-item">
+                <img src="WhatsApp Image 2025-10-12 at 8.06.31 PM.jpeg" alt="School Event Photo 3">
+            </div>
+            
+            <div class="gallery-item">
+                <img src="WhatsApp Image 2025-10-11 at 2.20.18 PM.jpeg" alt="School Event Photo 4">
+            </div>
+            
+            <div class="gallery-item">
+                <img src="WhatsApp Image 2025-09-07 at 2.32.48 PM.jpeg" alt="School Event Photo 5">
+            </div>
+            
+            <div class="gallery-item">
+                <img src="WhatsApp Image 2025-09-06 at 9.55.14 AM.jpeg" alt="School Event Photo 6">
+            </div>
+            
+            <div class="gallery-item">
+                <img src="WhatsApp Image 2025-09-06 at 9.55.13 AM.jpeg" alt="School Event Photo 7">
+            </div>
+            
+            <div class="gallery-item">
+                <img src="WhatsApp Image 2025-09-13 at 4.37.55 PM.jpeg" alt="School Event Photo 8">
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section light-bg">
+        <h2>Contact Us</h2>
+        </section>
+
+    <footer>
+        </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+
+            // --- Mobile Menu Toggle functionality ---
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', function () {
+                    navMenu.classList.toggle('active');
+                    
+                    const icon = menuToggle.querySelector('i');
+                    if (navMenu.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+                
+                // Close menu when a navigation link is clicked (on mobile)
+                navMenu.querySelectorAll('a').forEach(item => {
+                    item.addEventListener('click', () => {
+                        if(navMenu.classList.contains('active')) {
+                            navMenu.classList.remove('active');
+                            menuToggle.querySelector('i').classList.remove('fa-times');
+                            menuToggle.querySelector('i').classList.add('fa-bars');
+                        }
+                    });
+                });
+            }
+
+            // --- Contact Form Submission Alert ---
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    alert('Your message has been sent successfully. The GDJPS team will contact you soon. Thank you!');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
