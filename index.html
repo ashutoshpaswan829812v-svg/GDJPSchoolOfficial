@@ -255,6 +255,7 @@
             margin: 40px auto;
             border-top: 5px solid var(--primary-color);
         }
+        /* Adjusted width for 3 inputs */
         .result-box select,
         .result-box input[type="text"] {
             width: 30%; /* Adjusted for 3 columns */
@@ -395,7 +396,7 @@
             
             <div class="teacher-card">
                 <div class="photo-placeholder">P</div> 
-                <h4>[Principal/Headmaster]</h4> 
+                <h4>Ranjeet Kumar Singh</h4> 
                 <p>Principal</p> 
                 <p>M.A., Ph.D. in Education</p> 
             </div>
@@ -445,8 +446,25 @@
                     
                     <select id="classSelect" required>
                         <option value="" disabled selected>Select Class</option>
+                        <option value="Nursery">Nursery</option>
+                        <option value="LKG">LKG</option>
+                        <option value="UKG">UKG</option>
+                        <option value="Class_1">Class 1</option>
+                        <option value="Class_2">Class 2</option>
+                        <option value="Class_3">Class 3</option>
+                        <option value="Class_4">Class 4</option>
+                        <option value="Class_5">Class 5</option>
+                        <option value="Class_6">Class 6</option>
+                        <option value="Class_7">Class 7</option>
+                        <option value="Class_8">Class 8</option>
                         <option value="Class_9">Class 9</option>
                         <option value="Class_10">Class 10</option>
+                    </select>
+                    
+                    <select id="sectionSelect" required>
+                        <option value="" disabled selected>Select Section</option>
+                        <option value="Section_A">Section A</option>
+                        <option value="Section_B">Section B</option>
                         </select>
                     
                     <input type="text" id="rollNoInput" placeholder="Enter Roll Number (e.g., 005)" required>
@@ -455,7 +473,7 @@
                 </form>
                 
                 <p class="info-message" style="margin-top: 25px;">
-                    Dhyaan dein: Marksheet tabhi khulegi jab file ka naam aapke Roll No. se match karega (Example: 'PT1/Class_10/005.pdf').
+                    Dhyaan dein: Marksheet tabhi khulegi jab file ka naam aapke Roll No. se match karega (Example: 'PT1/Class_10/Section_A/005.pdf').
                 </p>
             </div>
         </div>
@@ -528,7 +546,7 @@
             const selectedExamTitle = document.getElementById('selectedExamTitle');
             const selectedExamType = document.getElementById('selectedExamType');
 
-            // --- Hero Section Background Slideshow Logic ---
+            // --- Hero Section Background Slideshow Logic (Unchanged) ---
             const heroSection = document.getElementById('home');
             const galleryImages = [
                 'WhatsApp Image 2025-10-12 at 8.08.32 PM.jpeg',
@@ -571,7 +589,7 @@
             // --- End Hero Section Background Slideshow Logic ---
 
 
-            // --- Other Existing Logic (Nav, Contact Form) ---
+            // --- Other Existing Logic (Nav, Contact Form) (Unchanged) ---
             if (menuToggle && navMenu) {
                 menuToggle.addEventListener('click', function () {
                     navMenu.classList.toggle('active');
@@ -602,40 +620,38 @@
                 });
             }
 
-            // --- FINAL UPDATED Result Search Logic ---
-            // 1. Exam Button Click Logic
+            // --- FINAL UPDATED Result Search Logic (with Section) ---
+            // 1. Exam Button Click Logic (Unchanged)
             examButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Highlight selected button
                     examButtons.forEach(btn => {
                         btn.classList.remove('active-exam-btn');
-                        btn.style.backgroundColor = 'var(--primary-color)'; // Reset to primary color
+                        btn.style.backgroundColor = 'var(--primary-color)';
                     });
                     this.classList.add('active-exam-btn');
-                    this.style.backgroundColor = 'var(--text-dark)'; // Highlight with dark color
+                    this.style.backgroundColor = 'var(--text-dark)';
 
-                    const examType = this.getAttribute('data-exam'); // PT1, HalfYearly, PT2, Annual
+                    const examType = this.getAttribute('data-exam');
                     const examTitle = this.textContent;
 
-                    // Display search interface
                     selectedExamTitle.textContent = examTitle;
                     selectedExamType.value = examType;
                     searchInterface.style.display = 'block';
                 });
             });
 
-            // 2. Search Form Submission Logic
+            // 2. Search Form Submission Logic (UPDATED with Section)
             if (resultSearchForm) {
                 resultSearchForm.addEventListener('submit', function (e) {
                     e.preventDefault();
                     
                     const examType = document.getElementById('selectedExamType').value;
                     const classFolder = document.getElementById('classSelect').value;
-                    // Removed sectionFolder as per final simplified logic
+                    const sectionFolder = document.getElementById('sectionSelect').value; // NEW SECTION VALUE
                     const rollNo = document.getElementById('rollNoInput').value.trim();
 
-                    if (!examType || !classFolder || !rollNo) {
-                        alert('Kripya Class aur Roll Number chunein/daalein.');
+                    if (!examType || !classFolder || !sectionFolder || !rollNo) {
+                        alert('Kripya Exam, Class, Section, aur Roll Number chunein/daalein.');
                         return;
                     }
 
@@ -648,11 +664,11 @@
                     // Base URL of Your Live Website 
                     const baseURL = 'https://ashutoshpaswan829812v-svg.github.io/GDJPSchoolOfficial/';
                     
-                    // FINAL URL PATH: .../Results/[Exam Type]/[Class]/[Roll No.].pdf
-                    const finalMarkSheetURL = `${baseURL}Results/${examType}/${classFolder}/${fileName}`;
+                    // NEW FINAL URL PATH: .../Results/[Exam]/[Class]/[Section]/[Roll No.].pdf
+                    const finalMarkSheetURL = `${baseURL}Results/${examType}/${classFolder}/${sectionFolder}/${fileName}`;
 
                     // Final Confirmation and Redirect
-                    alert(`Searching Marksheet for ${classFolder.replace('_', ' ')}, Roll No: ${formattedRollNo} for ${examType}. Opening Marksheet if available.`);
+                    alert(`Searching Marksheet for ${classFolder.replace('_', ' ')}, ${sectionFolder.replace('_', ' ')}, Roll No: ${formattedRollNo} for ${examType}. Opening Marksheet if available.`);
                     
                     // Naye tab mein marksheet khole
                     window.open(finalMarkSheetURL, '_blank');
