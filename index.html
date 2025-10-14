@@ -6,6 +6,7 @@
     <title>GDJPS - GYANDEEP JYOTI PUBLIC SCHOOL</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
@@ -250,7 +251,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             text-align: center;
-            max-width: 600px;
+            max-width: 900px;
             margin: 40px auto;
             border-top: 5px solid var(--primary-color);
         }
@@ -266,13 +267,6 @@
             text-align: center;
             box-sizing: border-box; /* Include padding in width */
         }
-        .result-box input[type="text"]:last-of-type {
-            margin-right: 0; /* No right margin for last input */
-        }
-        .result-box button.btn-primary {
-            width: 100%;
-            margin-top: 20px;
-        }
         .exam-buttons {
             display: flex;
             justify-content: center;
@@ -282,22 +276,13 @@
         }
         .exam-select-btn {
             border-radius: 5px;
+            flex-grow: 1; /* Allows buttons to take equal space */
+            max-width: 200px; /* Optional: Sets a max size for wide screens */
         }
-        /* Mobile adjustments for result search inputs */
-        @media (max-width: 768px) {
-            .result-box select,
-            .result-box input[type="text"] {
-                width: 100%; /* Full width on mobile */
-                margin-right: 0;
-                margin-bottom: 10px;
-            }
-            .exam-buttons button {
-                width: 100%; /* Full width for exam buttons */
-                margin-bottom: 10px;
-            }
+        .exam-select-btn.active-exam-btn {
+            background-color: var(--text-dark) !important;
         }
-
-
+        
         /* 7. Gallery Section */
         .gallery-grid {
             display: grid;
@@ -318,16 +303,19 @@
             transform: scale(1.05);
         }
 
-
         /* === Media Queries (Responsiveness) === */
-        @media (max-width: 992px) {
-            .info-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
         @media (max-width: 768px) {
-            /* Mobile menu fix */
+            .result-box select,
+            .result-box input[type="text"] {
+                width: 100%; /* Full width on mobile */
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            .exam-buttons button {
+                width: 100%; /* Full width for exam buttons */
+                max-width: none;
+                margin-bottom: 10px;
+            }
             .nav-menu {
                 display: none;
                 flex-direction: column;
@@ -339,39 +327,9 @@
                 box-shadow: 0 4px 4px rgba(0,0,0,0.1);
                 padding-bottom: 10px;
             }
-            .nav-menu.active { 
-                display: flex;
-            }
-            .nav-menu a {
-                padding: 12px 20px;
-                margin: 0;
-                border-bottom: 1px solid #eee;
-                width: 100%;
-                text-align: center;
-            }
-            .main-header {
-                flex-wrap: wrap;
-            }
-            .menu-toggle {
-                display: block;
-            }
-
-            /* Content adjustments */
-            .hero-content h1 {
-                font-size: 3.5rem;
-            }
-            .hero-content .full-name {
-                font-size: 1.4rem;
-            }
-            .hero-content .tagline {
-                font-size: 1.2rem;
-            }
-            .about-container {
-                flex-direction: column;
-            }
-            section {
-                padding: 50px 5%;
-            }
+            .nav-menu.active { display: flex; }
+            .menu-toggle { display: block; }
+            /* Other mobile adjustments... */
         }
     </style>
 </head>
@@ -424,7 +382,12 @@
 
     <section id="classes" class="content-section light-bg">
         <h2>Class Details</h2>
-        </section>
+        <div class="class-details-grid">
+            <div class="class-box"><h3>Pre-Primary Wing (Nursery - UKG)</h3><p>Focus on foundational skills, sensory development, and playful learning methods. Small batch sizes for personalized attention.</p></div>
+            <div class="class-box"><h3>Primary Wing (Class I - V)</h3><p>Introduction to core subjects, activity-based curriculum, and emphasis on reading, writing, and logical thinking.</p></div>
+            <div class="class-box"><h3>Middle Wing (Class VI - VIII)</h3><p>Detailed subject study, project-based learning, and preparation for advanced academic challenges under the CBSE structure.</p></div>
+        </div>
+    </section>
     
     <section id="faculty" class="content-section">
         <h2>Our Dedicated Faculty</h2>
@@ -432,46 +395,47 @@
             
             <div class="teacher-card">
                 <div class="photo-placeholder">P</div> 
-                <h4>[Teacher's Full Name 1]</h4> 
-                <p>[Principal/Headmaster]</p> 
-                <p>[Qualifications/Experience]</p> 
+                <h4>[Principal/Headmaster]</h4> 
+                <p>Principal</p> 
+                <p>M.A., Ph.D. in Education</p> 
             </div>
             
             <div class="teacher-card">
                 <div class="photo-placeholder">T</div> 
-                <h4>[Teacher's Full Name 2]</h4>
-                <p>[Senior Math Teacher]</p>
-                <p>[M.Sc., B.Ed.]</p>
+                <h4>[Senior Math Teacher Name]</h4>
+                <p>Senior Math Teacher</p>
+                <p>M.Sc., B.Ed. (8+ Yrs Exp.)</p>
             </div>
             
             <div class="teacher-card">
                 <div class="photo-placeholder">T</div> 
-                <h4>[Teacher's Full Name 3]</h4>
-                <p>[English Teacher]</p>
-                <p>[M.A. English, B.Ed.]</p>
+                <h4>[English Teacher Name]</h4>
+                <p>English & Literature</p>
+                <p>M.A. English, B.Ed.</p>
             </div>
             
             <div class="teacher-card">
                 <div class="photo-placeholder">T</div> 
-                <h4>[Teacher's Full Name 4]</h4>
-                <p>[Science Coordinator]</p>
-                <p>[M.Sc. Physics]</p>
+                <h4>[Science Coordinator Name]</h4>
+                <p>Science Coordinator</p>
+                <p>M.Sc. Physics</p>
             </div>
             
-            </div>
+        </div>
     </section>
 
     <section id="results" class="content-section light-bg">
         <h2>Examination Results Portal</h2>
         
-        <div class="result-box" style="max-width: 900px;">
+        <div class="result-box">
             <h3>Select Exam Result</h3>
             <p>Kripya pehle us exam ko chunein jiska result aap dekhna chahte hain:</p>
             
-            <div class="exam-buttons" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 30px;">
-                <button class="btn-primary exam-select-btn" data-exam="Term1" style="border-radius: 5px;">Term 1 Exam</button>
-                <button class="btn-primary exam-select-btn" data-exam="HalfYearly" style="border-radius: 5px;">Half Yearly Exam</button>
-                <button class="btn-primary exam-select-btn" data-exam="FinalExam" style="border-radius: 5px;">Annual Final Exam</button>
+            <div class="exam-buttons">
+                <button class="btn-primary exam-select-btn" data-exam="PT1">PT1 Exam</button>
+                <button class="btn-primary exam-select-btn" data-exam="HalfYearly">Half Yearly Examination</button>
+                <button class="btn-primary exam-select-btn" data-exam="PT2">PT2 Exam</button>
+                <button class="btn-primary exam-select-btn" data-exam="Annual">Annual Examination</button>
             </div>
             
             <div id="searchInterface" style="border: 1px solid #ddd; padding: 30px; border-radius: 8px; background: #fff; display: none;">
@@ -483,21 +447,15 @@
                         <option value="" disabled selected>Select Class</option>
                         <option value="Class_9">Class 9</option>
                         <option value="Class_10">Class 10</option>
-                    </select>
+                        </select>
                     
-                    <select id="sectionSelect" required>
-                        <option value="" disabled selected>Select Section</option>
-                        <option value="Section_A">Section A</option>
-                        <option value="Section_B">Section B</option>
-                    </select>
-                    
-                    <input type="text" id="rollNoInput" placeholder="Enter Roll Number (e.g., 001)" required>
+                    <input type="text" id="rollNoInput" placeholder="Enter Roll Number (e.g., 005)" required>
                     
                     <button type="submit" class="btn-primary" style="width: 100%; margin-top: 20px;"><i class="fas fa-search"></i> View Marksheet</button>
                 </form>
                 
                 <p class="info-message" style="margin-top: 25px;">
-                    Dhyaan dein: Marksheet tabhi khulegi jab file ka naam aapke Roll No. se match karega.
+                    Dhyaan dein: Marksheet tabhi khulegi jab file ka naam aapke Roll No. se match karega (Example: 'PT1/Class_10/005.pdf').
                 </p>
             </div>
         </div>
@@ -527,50 +485,180 @@
         <h2>School Gallery</h2>
         <p style="text-align:center; font-size: 1.2rem; color: #555; margin-bottom: 30px;"><i class="fas fa-images"></i> Glimpses of our school life, events, and infrastructure.</p>
         <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="WhatsApp Image 2025-10-12 at 8.08.32 PM.jpeg" alt="School Event Photo 1">
-            </div>
-            
-            <div class="gallery-item">
-                <img src="WhatsApp Image 2025-10-12 at 8.08.31 PM.jpeg" alt="School Event Photo 2">
-            </div>
-            
-            <div class="gallery-item">
-                <img src="WhatsApp Image 2025-10-12 at 8.06.31 PM.jpeg" alt="School Event Photo 3">
-            </div>
-            
-            <div class="gallery-item">
-                <img src="WhatsApp Image 2025-10-11 at 2.20.18 PM.jpeg" alt="School Event Photo 4">
-            </div>
-            
-            <div class="gallery-item">
-                <img src="WhatsApp Image 2025-09-07 at 2.32.48 PM.jpeg" alt="School Event Photo 5">
-            </div>
-            
-            <div class="gallery-item">
-                <img src="WhatsApp Image 2025-09-06 at 9.55.14 AM.jpeg" alt="School Event Photo 6">
-            </div>
-            
-            <div class="gallery-item">
-                <img src="WhatsApp Image 2025-09-06 at 9.55.13 AM.jpeg" alt="School Event Photo 7">
-            </div>
-            
-            <div class="gallery-item">
-                <img src="WhatsApp Image 2025-09-13 at 4.37.55 PM.jpeg" alt="School Event Photo 8">
-            </div>
-            
+            <div class="gallery-item"><img src="WhatsApp Image 2025-10-12 at 8.08.32 PM.jpeg" alt="School Event Photo 1"></div>
+            <div class="gallery-item"><img src="WhatsApp Image 2025-10-12 at 8.08.31 PM.jpeg" alt="School Event Photo 2"></div>
+            <div class="gallery-item"><img src="WhatsApp Image 2025-10-12 at 8.06.31 PM.jpeg" alt="School Event Photo 3"></div>
+            <div class="gallery-item"><img src="WhatsApp Image 2025-10-11 at 2.20.18 PM.jpeg" alt="School Event Photo 4"></div>
+            <div class="gallery-item"><img src="WhatsApp Image 2025-09-07 at 2.32.48 PM.jpeg" alt="School Event Photo 5"></div>
+            <div class="gallery-item"><img src="WhatsApp Image 2025-09-06 at 9.55.14 AM.jpeg" alt="School Event Photo 6"></div>
+            <div class="gallery-item"><img src="WhatsApp Image 2025-09-06 at 9.55.13 AM.jpeg" alt="School Event Photo 7"></div>
+            <div class="gallery-item"><img src="WhatsApp Image 2025-09-13 at 4.37.55 PM.jpeg" alt="School Event Photo 8"></div>
         </div>
     </section>
 
     <section id="contact" class="contact-section">
         <h2>Contact Us</h2>
-        </section>
+        <div class="contact-info-container">
+            <p><i class="fas fa-map-marker-alt"></i> **Address:** **Chaneya Bazar, Kishunpur, Patan, Palamu, Jharkhand - 822123**</p>
+            <p><i class="fas fa-phone"></i> **Phone:** +91 98765 43210</p>
+            <p><i class="fas fa-envelope"></i> **Email:** info@gdjps.edu.in</p>
+        </div>
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit" class="btn-primary">Send Message</button>
+        </form>
+    </section>
 
     <footer>
-        </footer>
+        <p>&copy; 2024 GYANDEEP JYOTI PUBLIC SCHOOL (GDJPS). All Rights Reserved.</p>
+        <p>Location: Patan, Palamu, Jharkhand - 822123</p>
+        <p class="tagline">"Enlightened by Knowledge, Towards Progress"</p>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const menuToggle = document.getElementById('menuToggle');
             const navMenu = document.getElementById('navMenu');
-            const contactForm = document.que
+            const contactForm = document.querySelector('.contact-form');
+            const resultSearchForm = document.getElementById('resultSearchForm');
+            const examButtons = document.querySelectorAll('.exam-select-btn');
+            const searchInterface = document.getElementById('searchInterface');
+            const selectedExamTitle = document.getElementById('selectedExamTitle');
+            const selectedExamType = document.getElementById('selectedExamType');
+
+            // --- Hero Section Background Slideshow Logic ---
+            const heroSection = document.getElementById('home');
+            const galleryImages = [
+                'WhatsApp Image 2025-10-12 at 8.08.32 PM.jpeg',
+                'WhatsApp Image 2025-10-12 at 8.08.31 PM.jpeg',
+                'WhatsApp Image 2025-10-12 at 8.06.31 PM.jpeg',
+                'WhatsApp Image 2025-10-11 at 2.20.18 PM.jpeg',
+                'WhatsApp Image 2025-09-07 at 2.32.48 PM.jpeg',
+                'WhatsApp Image 2025-09-06 at 9.55.14 AM.jpeg',
+                'WhatsApp Image 2025-09-06 at 9.55.13 AM.jpeg',
+                'WhatsApp Image 2025-09-13 at 4.37.55 PM.jpeg'
+            ];
+            let currentImageIndex = 0;
+
+            function changeHeroBackground() {
+                heroSection.querySelectorAll('.hero-background-slides').forEach(slide => {
+                    slide.classList.remove('active');
+                });
+
+                const newSlide = document.createElement('div');
+                newSlide.classList.add('hero-background-slides');
+                newSlide.style.backgroundImage = `url('${galleryImages[currentImageIndex]}')`;
+                heroSection.prepend(newSlide);
+
+                setTimeout(() => {
+                    newSlide.classList.add('active');
+                }, 50);
+
+                const oldSlides = heroSection.querySelectorAll('.hero-background-slides');
+                if (oldSlides.length > 1) {
+                    setTimeout(() => {
+                        oldSlides[oldSlides.length - 1].remove();
+                    }, 1600);
+                }
+                
+                currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            }
+
+            changeHeroBackground();
+            setInterval(changeHeroBackground, 5000); 
+            // --- End Hero Section Background Slideshow Logic ---
+
+
+            // --- Other Existing Logic (Nav, Contact Form) ---
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', function () {
+                    navMenu.classList.toggle('active');
+                    const icon = menuToggle.querySelector('i');
+                    if (navMenu.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+                navMenu.querySelectorAll('a').forEach(item => {
+                    item.addEventListener('click', () => {
+                        if(navMenu.classList.contains('active')) {
+                            navMenu.classList.remove('active');
+                            menuToggle.querySelector('i').classList.remove('fa-times');
+                            menuToggle.querySelector('i').classList.add('fa-bars');
+                        }
+                    });
+                });
+            }
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    alert('Your message has been sent successfully. The GDJPS team will contact you soon. Thank you!');
+                    contactForm.reset();
+                });
+            }
+
+            // --- FINAL UPDATED Result Search Logic ---
+            // 1. Exam Button Click Logic
+            examButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Highlight selected button
+                    examButtons.forEach(btn => {
+                        btn.classList.remove('active-exam-btn');
+                        btn.style.backgroundColor = 'var(--primary-color)'; // Reset to primary color
+                    });
+                    this.classList.add('active-exam-btn');
+                    this.style.backgroundColor = 'var(--text-dark)'; // Highlight with dark color
+
+                    const examType = this.getAttribute('data-exam'); // PT1, HalfYearly, PT2, Annual
+                    const examTitle = this.textContent;
+
+                    // Display search interface
+                    selectedExamTitle.textContent = examTitle;
+                    selectedExamType.value = examType;
+                    searchInterface.style.display = 'block';
+                });
+            });
+
+            // 2. Search Form Submission Logic
+            if (resultSearchForm) {
+                resultSearchForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    
+                    const examType = document.getElementById('selectedExamType').value;
+                    const classFolder = document.getElementById('classSelect').value;
+                    // Removed sectionFolder as per final simplified logic
+                    const rollNo = document.getElementById('rollNoInput').value.trim();
+
+                    if (!examType || !classFolder || !rollNo) {
+                        alert('Kripya Class aur Roll Number chunein/daalein.');
+                        return;
+                    }
+
+                    // Roll Number ko teen digits (001) mein format karein
+                    const formattedRollNo = rollNo.padStart(3, '0');
+                    
+                    // Final File Name sirf Roll Number hai (Example: 005.pdf)
+                    const fileName = `${formattedRollNo}.pdf`;
+                    
+                    // Base URL of Your Live Website 
+                    const baseURL = 'https://ashutoshpaswan829812v-svg.github.io/GDJPSchoolOfficial/';
+                    
+                    // FINAL URL PATH: .../Results/[Exam Type]/[Class]/[Roll No.].pdf
+                    const finalMarkSheetURL = `${baseURL}Results/${examType}/${classFolder}/${fileName}`;
+
+                    // Final Confirmation and Redirect
+                    alert(`Searching Marksheet for ${classFolder.replace('_', ' ')}, Roll No: ${formattedRollNo} for ${examType}. Opening Marksheet if available.`);
+                    
+                    // Naye tab mein marksheet khole
+                    window.open(finalMarkSheetURL, '_blank');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
