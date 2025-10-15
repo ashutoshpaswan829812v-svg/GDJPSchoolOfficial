@@ -3,336 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GDJPS - GYANDEEP JYOTI PUBLIC SCHOOL</title>
+    <title>GDJPS | Gyandeep Jyoti Public School - Patan, Palamu (CBSE Affiliated)</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> 
+    
+    <meta name="description" content="Official website of GDJPS, a CBSE affiliated school in Patan, Palamu, Jharkhand. Admissions open for Nursery to Class 10. Learn, Grow, Achieve.">
+    <meta name="keywords" content="GDJPS, Gyandeep Jyoti Public School, Patan School, Palamu CBSE School, Jharkhand School Admission, Best School in Patan">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <style>
-        /* Global Reset and Variables */
-        :root {
-            --primary-color: #E91E63; /* Rani Pink / Deep Rose */
-            --secondary-color: #FFC107; /* Gold/Amber - Accent color */
-            --text-dark: #2c3e50;
-            --text-light: #f4f4f4;
-            --light-bg: #fdf6f7;
-            --dark-bg: #2c3e50;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: white;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        /* Typography and Headings */
-        h1, h2, h3 {
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-            font-family: 'Merriweather', serif;
-        }
-        h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 2.5rem;
-            color: var(--primary-color);
-            position: relative;
-            padding-bottom: 10px;
-        }
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--secondary-color);
-            border-radius: 5px;
-        }
-
-        /* Buttons & Hover Effect */
-        .btn-primary {
-            display: inline-block;
-            background: var(--primary-color);
-            color: white;
-            padding: 14px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-            border: none;
-            cursor: pointer;
-            font-weight: 700;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            letter-spacing: 1px;
-        }
-        .btn-primary:hover {
-            background: #d81b60;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        /* === 1. Header & Navigation === */
-        .main-header {
-            background: white;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .logo {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        .logo h1 {
-            color: var(--primary-color);
-            margin: 0;
-            font-size: 1.5rem;
-        }
-        .logo span {
-            display: block;
-            font-size: 0.75rem;
-            color: var(--text-dark);
-            margin-top: 0px;
-            font-weight: 600;
-        }
-
-        .nav-menu a {
-            color: var(--text-dark);
-            text-decoration: none;
-            padding: 10px 15px;
-            margin-left: 10px;
-            font-weight: 600;
-            transition: color 0.3s, border-bottom 0.3s, transform 0.2s;
-        }
-        .nav-menu a:hover {
-            color: var(--primary-color);
-            border-bottom: 3px solid var(--primary-color);
-            transform: scale(1.05);
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: var(--primary-color);
-        }
-
-        /* === 2. Hero Section - NEW Styles for Animated Background === */
-        .hero-section {
-            position: relative;
-            height: 80vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            overflow: hidden; /* Important for background slides */
-        }
-
-        .hero-background-slides {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out; /* Fade transition */
-        }
-        .hero-background-slides.active {
-            opacity: 1;
-        }
-        /* Overlay to make text readable */
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.75); /* Dark overlay */
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative; /* Bring content above overlay */
-            z-index: 2;
-        }
-        .hero-content .full-name {
-            font-size: 1.8rem; 
-            margin-bottom: 5px;
-            color: #FFECB3;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-            font-weight: 600;
-            font-family: 'Poppins', sans-serif;
-        }
-        .hero-content h1 {
-            font-size: 4.5rem;
-            margin-bottom: 10px;
-            color: white;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
-            line-height: 1.1;
-        }
-        .hero-content .tagline {
-            font-size: 1.6rem;
-            margin-bottom: 40px;
-            color: var(--secondary-color);
-        }
-
-        /* === 3. Section Styling (General) === */
-        section {
-            padding: 80px 5%;
-        }
-        .light-bg {
-            background-color: var(--light-bg);
-        }
-
-        /* --- Teacher Details (Simplified for no photo) --- */
-        .faculty-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .teacher-card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border-top: 3px solid var(--secondary-color);
-        }
-        .teacher-card .photo-placeholder {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            margin: 0 auto 10px auto;
-            border: 3px solid var(--secondary-color);
-        }
-        .teacher-card h4 {
-            color: var(--text-dark);
-            margin-bottom: 5px;
-        }
-        .teacher-card p {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 0;
-        }
-
-        /* --- Custom Style for Result Section --- */
-        .result-box {
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            text-align: center;
-            max-width: 900px;
-            margin: 40px auto;
-            border-top: 5px solid var(--primary-color);
-        }
-        /* Adjusted width for 3 inputs */
-        .result-box select,
-        .result-box input[type="text"] {
-            width: 30%; /* Adjusted for 3 columns */
-            padding: 12px;
-            margin-right: 2%; /* Spacing between inputs */
-            margin-bottom: 15px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            text-align: center;
-            box-sizing: border-box; /* Include padding in width */
-        }
-        .exam-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
-            flex-wrap: wrap; /* Allow wrapping on small screens */
-        }
-        .exam-select-btn {
-            border-radius: 5px;
-            flex-grow: 1; /* Allows buttons to take equal space */
-            max-width: 200px; /* Optional: Sets a max size for wide screens */
-        }
-        .exam-select-btn.active-exam-btn {
-            background-color: var(--text-dark) !important;
-        }
-        
-        /* 7. Gallery Section */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .gallery-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            transition: transform 0.3s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .gallery-item img:hover {
-            transform: scale(1.05);
-        }
-
-        /* === Media Queries (Responsiveness) === */
-        @media (max-width: 768px) {
-            .result-box select,
-            .result-box input[type="text"] {
-                width: 100%; /* Full width on mobile */
-                margin-right: 0;
-                margin-bottom: 10px;
-            }
-            .exam-buttons button {
-                width: 100%; /* Full width for exam buttons */
-                max-width: none;
-                margin-bottom: 10px;
-            }
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                position: absolute;
-                top: 70px; 
-                left: 0;
-                background: white;
-                box-shadow: 0 4px 4px rgba(0,0,0,0.1);
-                padding-bottom: 10px;
-            }
-            .nav-menu.active { display: flex; }
-            .menu-toggle { display: block; }
-            /* Other mobile adjustments... */
-        }
-    </style>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -395,68 +75,32 @@
         <div class="faculty-grid">
             
             <div class="teacher-card">
-                <div class="photo-placeholder">P</div> 
-                <h4>Ranjeet Kumar Singh</h4> 
-                <p>Principal</p> 
-                <p>M.A., Ph.D. in Education</p> 
+                <img src="teacher-photos/principal.jpg" alt="Principal Photo" class="teacher-photo">
+                <h4>[Principal's Name]</h4> 
+                <p>Principal/Headmaster</p> 
+                <p>M.A., Ph.D. in Education (20+ Yrs Exp.)</p> 
             </div>
             
             <div class="teacher-card">
-                <div class="photo-placeholder">T</div> 
-                <h4>Bikash Kumar</h4>
+                <img src="teacher-photos/teacher_math.jpg" alt="Math Teacher Photo" class="teacher-photo">
+                <h4>[Senior Math Teacher Name]</h4>
                 <p>Senior Math Teacher</p>
                 <p>M.Sc., B.Ed. (8+ Yrs Exp.)</p>
             </div>
             
             <div class="teacher-card">
-                <div class="photo-placeholder">T</div> 
-                <h4>Shah Jahan Anasri</h4>
+                <img src="teacher-photos/teacher_english.jpg" alt="English Teacher Photo" class="teacher-photo">
+                <h4>[English Teacher Name]</h4>
                 <p>English & Literature</p>
                 <p>M.A. English, B.Ed.</p>
             </div>
             
             <div class="teacher-card">
-                <div class="photo-placeholder">T</div> 
-                <h4>Sadhna Kumari</h4>
+                <img src="teacher-photos/teacher_science.jpg" alt="Science Coordinator Photo" class="teacher-photo">
+                <h4>[Science Coordinator Name]</h4>
                 <p>Science Coordinator</p>
-                <p>M.Sc. Physics</p>
+                <p>M.Sc. Physics (10 Yrs Exp.)</p>
             </div>
-            
-            <div class="teacher-card">
-                <div class="photo-placeholder">T</div> 
-                <h4>Ashutosh Kumar</h4>
-                <p>Computer Science & IT</p>
-                <p>MIT & IT in Software</p>
-            </div>
-              
-            <div class="teacher-card">
-                <div class="photo-placeholder">T</div> 
-                <h4>Chandan Kumar</h4>
-                <p>Hindi</p>
-                <p>M.A Hindi</p>
-            </div>
-              
-            <div class="teacher-card">
-                <div class="photo-placeholder">T</div> 
-                <h4>Aman Shukla</h4>
-                <p>Music Teacher</p>
-                <p>M.A Music</p>
-            </div>
-              
-            <div class="teacher-card">
-                <div class="photo-placeholder">T</div> 
-                <h4>Samsad Ansari</h4>
-                <p>Math</p>
-                <p>M.A Math</p>
-            </div>
-              
-            <div class="teacher-card">
-                <div class="photo-placeholder">T</div> 
-                <h4>Nagma Sahin</h4>
-                <p>Art & Painting</p>
-                <p>M.A</p>
-            </div>
-            
         </div>
     </section>
 
@@ -500,7 +144,7 @@
                         <option value="" disabled selected>Select Section</option>
                         <option value="Section_A">Section A</option>
                         <option value="Section_B">Section B</option>
-                        </select>
+                    </select>
                     
                     <input type="text" id="rollNoInput" placeholder="Enter Roll Number (e.g., 005)" required>
                     
@@ -570,147 +214,6 @@
         <p class="tagline">"Enlightened by Knowledge, Towards Progress"</p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const menuToggle = document.getElementById('menuToggle');
-            const navMenu = document.getElementById('navMenu');
-            const contactForm = document.querySelector('.contact-form');
-            const resultSearchForm = document.getElementById('resultSearchForm');
-            const examButtons = document.querySelectorAll('.exam-select-btn');
-            const searchInterface = document.getElementById('searchInterface');
-            const selectedExamTitle = document.getElementById('selectedExamTitle');
-            const selectedExamType = document.getElementById('selectedExamType');
-
-            // --- Hero Section Background Slideshow Logic (Unchanged) ---
-            const heroSection = document.getElementById('home');
-            const galleryImages = [
-                'WhatsApp Image 2025-10-12 at 8.08.32 PM.jpeg',
-                'WhatsApp Image 2025-10-12 at 8.08.31 PM.jpeg',
-                'WhatsApp Image 2025-10-12 at 8.06.31 PM.jpeg',
-                'WhatsApp Image 2025-10-11 at 2.20.18 PM.jpeg',
-                'WhatsApp Image 2025-09-07 at 2.32.48 PM.jpeg',
-                'WhatsApp Image 2025-09-06 at 9.55.14 AM.jpeg',
-                'WhatsApp Image 2025-09-06 at 9.55.13 AM.jpeg',
-                'WhatsApp Image 2025-09-13 at 4.37.55 PM.jpeg'
-            ];
-            let currentImageIndex = 0;
-
-            function changeHeroBackground() {
-                heroSection.querySelectorAll('.hero-background-slides').forEach(slide => {
-                    slide.classList.remove('active');
-                });
-
-                const newSlide = document.createElement('div');
-                newSlide.classList.add('hero-background-slides');
-                newSlide.style.backgroundImage = `url('${galleryImages[currentImageIndex]}')`;
-                heroSection.prepend(newSlide);
-
-                setTimeout(() => {
-                    newSlide.classList.add('active');
-                }, 50);
-
-                const oldSlides = heroSection.querySelectorAll('.hero-background-slides');
-                if (oldSlides.length > 1) {
-                    setTimeout(() => {
-                        oldSlides[oldSlides.length - 1].remove();
-                    }, 1600);
-                }
-                
-                currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
-            }
-
-            changeHeroBackground();
-            setInterval(changeHeroBackground, 5000); 
-            // --- End Hero Section Background Slideshow Logic ---
-
-
-            // --- Other Existing Logic (Nav, Contact Form) (Unchanged) ---
-            if (menuToggle && navMenu) {
-                menuToggle.addEventListener('click', function () {
-                    navMenu.classList.toggle('active');
-                    const icon = menuToggle.querySelector('i');
-                    if (navMenu.classList.contains('active')) {
-                        icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-times');
-                    } else {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                });
-                navMenu.querySelectorAll('a').forEach(item => {
-                    item.addEventListener('click', () => {
-                        if(navMenu.classList.contains('active')) {
-                            navMenu.classList.remove('active');
-                            menuToggle.querySelector('i').classList.remove('fa-times');
-                            menuToggle.querySelector('i').classList.add('fa-bars');
-                        }
-                    });
-                });
-            }
-            if (contactForm) {
-                contactForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    alert('Your message has been sent successfully. The GDJPS team will contact you soon. Thank you!');
-                    contactForm.reset();
-                });
-            }
-
-            // --- FINAL UPDATED Result Search Logic (with Section) ---
-            // 1. Exam Button Click Logic (Unchanged)
-            examButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    examButtons.forEach(btn => {
-                        btn.classList.remove('active-exam-btn');
-                        btn.style.backgroundColor = 'var(--primary-color)';
-                    });
-                    this.classList.add('active-exam-btn');
-                    this.style.backgroundColor = 'var(--text-dark)';
-
-                    const examType = this.getAttribute('data-exam');
-                    const examTitle = this.textContent;
-
-                    selectedExamTitle.textContent = examTitle;
-                    selectedExamType.value = examType;
-                    searchInterface.style.display = 'block';
-                });
-            });
-
-            // 2. Search Form Submission Logic (UPDATED with Section)
-            if (resultSearchForm) {
-                resultSearchForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    
-                    const examType = document.getElementById('selectedExamType').value;
-                    const classFolder = document.getElementById('classSelect').value;
-                    const sectionFolder = document.getElementById('sectionSelect').value; // NEW SECTION VALUE
-                    const rollNo = document.getElementById('rollNoInput').value.trim();
-
-                    if (!examType || !classFolder || !sectionFolder || !rollNo) {
-                        alert('Kripya Exam, Class, Section, aur Roll Number chunein/daalein.');
-                        return;
-                    }
-
-                    // Roll Number ko teen digits (001) mein format karein
-                    const formattedRollNo = rollNo.padStart(3, '0');
-                    
-                    // Final File Name sirf Roll Number hai (Example: 005.pdf)
-                    const fileName = `${formattedRollNo}.pdf`;
-                    
-                    // Base URL of Your Live Website 
-                    const baseURL = 'https://ashutoshpaswan829812v-svg.github.io/GDJPSchoolOfficial/';
-                    
-                    // NEW FINAL URL PATH: .../Results/[Exam]/[Class]/[Section]/[Roll No.].pdf
-                    const finalMarkSheetURL = `${baseURL}Results/${examType}/${classFolder}/${sectionFolder}/${fileName}`;
-
-                    // Final Confirmation and Redirect
-                    alert(`Searching Marksheet for ${classFolder.replace('_', ' ')}, ${sectionFolder.replace('_', ' ')}, Roll No: ${formattedRollNo} for ${examType}. Opening Marksheet if available.`);
-                    
-                    // Naye tab mein marksheet khole
-                    window.open(finalMarkSheetURL, '_blank');
-                });
-            }
-        });
-    </script>
+    <script src="script.js"></script> 
 </body>
 </html>
-
